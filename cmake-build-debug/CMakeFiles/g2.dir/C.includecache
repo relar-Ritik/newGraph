@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ritik/CLionProjects/g2/linkedList.c
+linkedList.h
+/home/ritik/CLionProjects/g2/linkedList.h
+
+/home/ritik/CLionProjects/g2/linkedList.h
+stdlib.h
+-
+stdio.h
+-
+

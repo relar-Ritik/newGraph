@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/g2.dir/main.c.o CMakeFiles/g2.dir/edgeList.c.o CMakeFiles/g2.dir/graph.c.o CMakeFiles/g2.dir/que.c.o CMakeFiles/g2.dir/stack.c.o CMakeFiles/g2.dir/linkedList.c.o  -o g2 
