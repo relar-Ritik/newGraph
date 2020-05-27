@@ -30,14 +30,6 @@ stdlib.h
 stdio.h
 -
 
-/home/ritik/CLionProjects/g2/main.c
-stdio.h
--
-graph.h
-/home/ritik/CLionProjects/g2/graph.h
-stack.h
-/home/ritik/CLionProjects/g2/stack.h
-
 /home/ritik/CLionProjects/g2/que.h
 linkedList.h
 /home/ritik/CLionProjects/g2/linkedList.h

@@ -323,6 +323,14 @@ int* MST(graph *a) {
         parent[nextVertex] = start;
         counter++;
     }
+
+    //displaying the tree
+    for (int k = 0; k < MAXSIZE; ++k) {
+        if(parent[k] != -1){
+            printf("%d-->%d\n", parent[k], k);
+        }
+    }
+
     return parent;
 
 }
