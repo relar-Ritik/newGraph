@@ -5,17 +5,25 @@ int main() {
 
     graph A;
     init_graph(&A);
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < 9; ++i) {
         addVertex(&A, i);
     }
-    addEdge(&A,0,1,1,5);
-    addEdge(&A, 0,2,1,5);
-    addEdge(&A, 1,3,1,5);
-    addEdge(&A, 3,4,1,5);
-    addEdge(&A, 2,4,1,6);
-    addEdge(&A, 2,3,1,7);
-    addEdge(&A, 5,6,1,8);
-    addEdge(&A, 4,5,1,9);
+    addEdge(&A,0,1,0,4);
+    addEdge(&A,0,7,0,8);
+    addEdge(&A,1,7,0,11);
+    addEdge(&A,1,2,0,8);
+    addEdge(&A,2,8,0,2);
+    addEdge(&A,2,3,0,7);
+    addEdge(&A,2,5,0,4);
+    addEdge(&A,3,4,0,9);
+    addEdge(&A,3,5,0,14);
+    addEdge(&A,5,4,0,10);
+    addEdge(&A,6,5,0,2);
+    addEdge(&A,6,8,0,6);
+    addEdge(&A,7,6,0,1);
+    addEdge(&A,7,8,0,7);
+
+
     depthFirstTraversal(&A, 0);
     int *cost;
     int *path = dijkstra(&A, 0, &cost);
@@ -44,8 +52,8 @@ int main() {
 
     printf("is Cycle: %d", cy);
 
-
-
+    int *parent = MST(&A);
+    int nm=45;
 
     return 0;
 }

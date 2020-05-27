@@ -145,7 +145,7 @@ bool isGraphConnected(graph *a) {
 
 }
 
-int minIndex(int *a, int *closeSet) {
+int minIndex(int *a, bool *closeSet) {
     int j=-1;
     int min = INF;
     for (int i = 0; i < MAXSIZE; ++i) {
@@ -307,9 +307,43 @@ bool isCyclerecur(graph *a, int vertex, bool *isVisited, int parent) {
 }
 
 int* MST(graph *a) {
-    int *parent = malloc(a->size*sizeof(int));
+    int *parent = malloc(MAXSIZE*sizeof(int));
+    for (int i = 0; i <MAXSIZE ; ++i) {
+        parent[i]=-1;
+    }
 
+    int start = -1;
+    for (int j = 0; j < MAXSIZE && start == -1; ++j) {
+        if(a->vertices[j].active==TRUE) start = j;
+    }
+    parent[start] = start;
+    int counter = 1;
+    while (counter < a->size){
+        int nextVertex = getMinEdge(a, parent, &start);
+        parent[nextVertex] = start;
+        counter++;
+    }
+    return parent;
 
+}
+
+int getMinEdge(graph *a, int *parent, int *start) {
+    int index = -1;
+    int min = INF;
+    for (int i = 0; i < MAXSIZE; ++i) {
+        if(parent[i] != -1){
+            edge *adj = a->vertices[i].edgeList;
+            while (adj != NULL){
+                if(parent[adj->vertex] == -1 && min > adj->cost){
+                    index = adj->vertex;
+                    min = adj->cost;
+                    *start = i;
+                }
+                adj = adj->next;
+            }
+        }
+    }
+    return index;
 }
 
 
