@@ -19,9 +19,33 @@ int main() {
     depthFirstTraversal(&A, 0);
     int *cost;
     int *path = dijkstra(&A, 0, &cost);
+    int **c;
+    int **p = allPairShortestPath(&A, &c);
+    displayPathToAllVertices(path,cost,0);
     breadthFirstTraversal(&A);
     topologicalSort(&A);
     int n = isGraphConnected(&A);
     printf("\n%d\n", n);
+
+
+    graph B;
+    init_graph(&B);
+    addVertex(&B, 0);
+    addVertex(&B, 1);
+    addVertex(&B, 2);
+    addVertex(&B, 3);
+
+    addEdge(&B, 0,1,0,1);
+    addEdge(&B,1,2,0,1);
+    addEdge(&B,3,2,0,1);
+    addEdge(&B,0,2,0,1);
+
+    bool cy = isCyclePresent(&B);
+
+    printf("is Cycle: %d", cy);
+
+
+
+
     return 0;
 }

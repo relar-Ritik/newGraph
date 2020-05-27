@@ -6,13 +6,39 @@
 
 #IncludeRegexTransform: 
 
-/home/ritik/CLionProjects/g2/linkedList.c
+/home/ritik/CLionProjects/g2/edgeList.h
 linkedList.h
 /home/ritik/CLionProjects/g2/linkedList.h
+
+/home/ritik/CLionProjects/g2/graph.h
+linkedList.h
+/home/ritik/CLionProjects/g2/linkedList.h
+que.h
+/home/ritik/CLionProjects/g2/que.h
+stack.h
+/home/ritik/CLionProjects/g2/stack.h
+edgeList.h
+/home/ritik/CLionProjects/g2/edgeList.h
 
 /home/ritik/CLionProjects/g2/linkedList.h
 stdlib.h
 -
 stdio.h
 -
+
+/home/ritik/CLionProjects/g2/main.c
+stdio.h
+-
+graph.h
+/home/ritik/CLionProjects/g2/graph.h
+stack.h
+/home/ritik/CLionProjects/g2/stack.h
+
+/home/ritik/CLionProjects/g2/que.h
+linkedList.h
+/home/ritik/CLionProjects/g2/linkedList.h
+
+/home/ritik/CLionProjects/g2/stack.h
+linkedList.h
+/home/ritik/CLionProjects/g2/linkedList.h
 

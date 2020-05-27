@@ -33,6 +33,9 @@ void topoSort(graph *a, int vertexId ,stack *m, bool isVisited[MAXSIZE]);
 bool isGraphConnected(graph *a);
 int minIndex(int *a, int *closeSet);
 int *dijkstra(graph *a, int origin, int **cost);
-
-
+void displayPathToAllVertices(int path[], int cost[], int origin);
+int** allPairShortestPath(graph *a, int ***cost);
+bool isCyclePresent(graph *a);
+bool isCyclerecur(graph *a, int vertex,bool isVisited[], int parent);
+int* MST(graph *a);
 #endif //G2_GRAPH_H

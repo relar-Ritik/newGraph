@@ -200,6 +200,118 @@ int *dijkstra(graph *a, int origin, int **cost) {
 
 }
 
+void displayPathToAllVertices(int *path, int *cost, int origin) {
+    for (int i = 0; i < MAXSIZE; ++i) {
+        if(i != origin && cost[i] != INF){
+            printf("cost: %d\n", cost[i]);
+            printf("%d-->", i);
+            int j = path[i];
+            while (j!=origin){
+                printf("%d-->", j);
+                j = path[j];
+            }
+            printf("%d\n", j);
+        }
+    }
+}
+
+int** allPairShortestPath(graph *a, int ***cost) {
+    int **costMatrix = malloc(MAXSIZE * sizeof(int*));
+    int **pathMatrix = malloc(MAXSIZE * sizeof(int*));
+    for (int i = 0; i < MAXSIZE; ++i) {
+        costMatrix[i] = malloc(MAXSIZE * sizeof(int));
+        pathMatrix[i] = malloc(MAXSIZE * sizeof(int));
+        for (int j = 0; j < MAXSIZE; ++j) {
+            costMatrix[i][j] = INF;
+            pathMatrix[i][j] = -1;
+        }
+    } //allocate memory for the matrix as well as set them to INF
+    for (int j = 0; j < MAXSIZE; ++j) {
+        if(a->vertices[j].active == TRUE){
+            edge *adj = a->vertices[j].edgeList;
+            while (adj !=NULL){
+                int vertex = adj->vertex;
+                costMatrix[j][vertex] = adj->cost;
+                pathMatrix[j][vertex] = j;
+                adj = adj->next;
+            }
+        }
+
+    } //init costMatrix and pathMatrix
+    for (int k = 0; k < MAXSIZE; ++k) {
+        if(a->vertices[k].active == TRUE){
+            for (int i = 0; i < MAXSIZE; ++i) {
+                if(a->vertices[i].active == TRUE){
+                    for (int j = 0; j < MAXSIZE; ++j) {
+                        if(a->vertices[j].active == TRUE){
+                            if ( costMatrix[i][k] != INF &&
+                                 costMatrix[k][j] != INF &&
+                                 costMatrix[i][k] + costMatrix[k][j] < costMatrix[i][j]
+                                    ){
+                                costMatrix[i][j] = costMatrix[i][k] + costMatrix[k][j];
+                                pathMatrix[i][j] = k;
+                            }
+
+
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+    *cost = costMatrix;
+    return pathMatrix;
+}
+
+bool isCyclePresent(graph *a) {
+    bool ret = FALSE;
+    bool isVisited[MAXSIZE] = {FALSE};
+    for (int i = 0; i < MAXSIZE; ++i) {
+        if(a->vertices[i].active == TRUE){
+           if(isVisited[i] == FALSE){
+               isVisited[i] = TRUE;
+               edge *adj  = a->vertices[i].edgeList;
+               while (adj != NULL){
+                   int child = adj->vertex;
+                   if(isCyclerecur(a, child,isVisited, i) ==  TRUE){
+                       return TRUE;
+                   }
+                   adj = adj->next;
+               }
+           }
+        }
+    }
+    return ret;
+}
+
+bool isCyclerecur(graph *a, int vertex, bool *isVisited, int parent) {
+    if(isVisited[vertex] == TRUE){
+        return TRUE;
+    }
+    bool ret = FALSE;
+    isVisited[vertex] = TRUE;
+    edge *adj = a->vertices[vertex].edgeList;
+    while (adj != NULL){
+        if(adj->vertex != parent){
+            ret = isCyclerecur(a,adj->vertex,isVisited,vertex);
+            if(ret == TRUE){
+                return TRUE;
+            }
+        }
+        adj = adj->next;
+    }
+
+    return FALSE;
+}
+
+int* MST(graph *a) {
+    int *parent = malloc(a->size*sizeof(int));
+
+
+}
+
 
 
 
